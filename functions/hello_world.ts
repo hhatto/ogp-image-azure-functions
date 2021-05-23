@@ -1,5 +1,6 @@
 import type { AzureFunctionsContext } from "../deps.ts";
 import { Image } from "../deps.ts";
+import { encode } from "https://deno.land/std/encoding/base64.ts"
 
 const __filename = new URL(".", import.meta.url).pathname;
 const RESOURCE_ROOT = `${__filename}`;
@@ -24,13 +25,7 @@ async function handler(context: AzureFunctionsContext) {
   const encoded = await image.encode(1);
   console.log(encoded)
 
-  return {
-    status: 200,
-    headers: {
-      'Content-Type': 'image/png',
-    },
-    body: encoded,
-  };
+  return encode(encoded);
 }
 
 export default {
