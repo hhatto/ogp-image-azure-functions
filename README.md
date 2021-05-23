@@ -15,3 +15,9 @@ deploy
 ```
 $ denofunc publish ss-ogp-image
 ```
+
+## on local env
+
+```
+$ denofunc start
+```
